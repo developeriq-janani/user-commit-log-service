@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-commit-log-service
+  labels:
+    app: user-commit-log-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-commit-log-service
+  template:
+    metadata:
+      labels:
+        app: user-commit-log-service
+    spec:
+      containers:
+        - name: user-commit-log-service
+          image: gcr.io/PROJECT_ID/IMAGE:TAG  # Replace with your Docker Hub image and tag
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "80Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
