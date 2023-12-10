@@ -20,10 +20,22 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /api/v1/user-commit-log-service/actuator/health
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /api/v1/user-commit-log-service/actuator/health
+            initialDelaySeconds: 40
+            periodSeconds: 10
           resources:
             requests:
-              cpu: "50m"
-              memory: "80Mi"
+              cpu: "300m"
+              memory: "400Mi"
             limits:
               cpu: "500m"
               memory: "512Mi"
