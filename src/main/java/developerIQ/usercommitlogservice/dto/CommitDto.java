@@ -5,14 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+public class CommitDto {
 
-public class GitHubCommitDto {
+    @JsonProperty("author")
+    private AuthorDto authorDto;
 
-    @JsonProperty("commit")
-    private CommitDto commitDto;
-
+    private String message;
 }

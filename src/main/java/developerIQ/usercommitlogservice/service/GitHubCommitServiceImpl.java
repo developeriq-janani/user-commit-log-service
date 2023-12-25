@@ -1,5 +1,6 @@
 package developerIQ.usercommitlogservice.service;
 
+import developerIQ.usercommitlogservice.dto.GitHubCommitDetailsDto;
 import developerIQ.usercommitlogservice.dto.GitHubCommitDto;
 import developerIQ.usercommitlogservice.model.GitHubCommit;
 import developerIQ.usercommitlogservice.repository.GitHubCommitRepository;
@@ -42,15 +43,19 @@ public class GitHubCommitServiceImpl implements GitHubCommitService {
         return this.gitHubUserRepository.findAll();
     }
 
+    @Override
+    public GitHubCommitDetailsDto getAllCommitsByAuthorName(String authorName){
+        List<GitHubCommit> gitHubCommits = this.gitHubUserRepository.findAllByAuthorName(authorName.trim());
+        return GitHubCommitDetailsDto.builder().commitCount(gitHubCommits.size()).userCommits(gitHubCommits).build();
+
+    }
+
     private GitHubCommit generateGitHubCommitObject(GitHubCommitDto gitHubCommitDto) {
         return GitHubCommit.builder()
-                .gitHubId(gitHubCommitDto.getId())
-                .login(gitHubCommitDto.getLogin())
-                .contributions(gitHubCommitDto.getContributions())
-                .type(gitHubCommitDto.getType())
-                .siteAdmin(gitHubCommitDto.isSiteAdmin())
-                .reposUrl(gitHubCommitDto.getReposUrl())
-                .nodeId(gitHubCommitDto.getNodeId())
+                .authorName(gitHubCommitDto.getCommitDto().getAuthorDto().getName())
+                .commitMessage(gitHubCommitDto.getCommitDto().getMessage())
+                .email(gitHubCommitDto.getCommitDto().getAuthorDto().getEmail())
+                .date(gitHubCommitDto.getCommitDto().getAuthorDto().getDate())
                 .build();
     }
 

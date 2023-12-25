@@ -1,15 +1,16 @@
 package developerIQ.usercommitlogservice.controller;
 
+import developerIQ.usercommitlogservice.dto.GitHubCommitDetailsDto;
 import developerIQ.usercommitlogservice.model.GitHubCommit;
 import developerIQ.usercommitlogservice.service.GitHubCommitService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
 
 
 @RestController
@@ -27,5 +28,10 @@ public class CommitController {
     @GetMapping("/commits/get-all")
     public ResponseEntity<List<GitHubCommit>> getAllCommits() {
         return ResponseEntity.ok(this.gitHubCommitService.getAllCommits());
+    }
+
+    @GetMapping("/commits/by-author-name")
+    public ResponseEntity<GitHubCommitDetailsDto> getAllCommitsByAuthorName(@RequestParam String authorName) {
+        return ResponseEntity.ok(this.gitHubCommitService.getAllCommitsByAuthorName(authorName));
     }
 }

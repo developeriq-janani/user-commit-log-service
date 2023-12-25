@@ -4,7 +4,7 @@ server:
     context-path: /api/v1/user-commit-log-service
 
 github:
-  commit-detail-url: https://api.github.com/repos/EthicalML/awesome-production-machine-learning/contributors
+  commit-detail-url: https://api.github.com/repos/EthicalML/awesome-production-machine-learning/commits
 
 spring:
   data:

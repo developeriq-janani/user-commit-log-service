@@ -20,17 +20,12 @@ public class GitHubCommit {
     @Id
     private String id;
 
-    private String login;
+    private String authorName;
 
-    private int gitHubId;
+    private String commitMessage;
 
-    private String nodeId;
+    private String date;
 
-    private String reposUrl;
+    private String email;
 
-    private String type;
-
-    private boolean siteAdmin;
-
-    private int contributions;
 }
