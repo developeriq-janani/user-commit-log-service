@@ -10,3 +10,4 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://janani20231958:uESIWf8TL2LZeFPL@cluster0.dznm25o.mongodb.net/developer_iq_tracker
+
