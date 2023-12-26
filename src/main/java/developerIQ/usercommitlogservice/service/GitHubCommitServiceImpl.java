@@ -44,15 +44,15 @@ public class GitHubCommitServiceImpl implements GitHubCommitService {
     }
 
     @Override
-    public GitHubCommitDetailsDto getAllCommitsByAuthorName(String authorName){
-        List<GitHubCommit> gitHubCommits = this.gitHubUserRepository.findAllByAuthorName(authorName.trim());
+    public GitHubCommitDetailsDto getAllCommitsByUserName(String userName){
+        List<GitHubCommit> gitHubCommits = this.gitHubUserRepository.findAllByUserName(userName.trim());
         return GitHubCommitDetailsDto.builder().commitCount(gitHubCommits.size()).userCommits(gitHubCommits).build();
 
     }
 
     private GitHubCommit generateGitHubCommitObject(GitHubCommitDto gitHubCommitDto) {
         return GitHubCommit.builder()
-                .authorName(gitHubCommitDto.getCommitDto().getAuthorDto().getName())
+                .userName(gitHubCommitDto.getCommitDto().getAuthorDto().getName())
                 .commitMessage(gitHubCommitDto.getCommitDto().getMessage())
                 .email(gitHubCommitDto.getCommitDto().getAuthorDto().getEmail())
                 .date(gitHubCommitDto.getCommitDto().getAuthorDto().getDate())

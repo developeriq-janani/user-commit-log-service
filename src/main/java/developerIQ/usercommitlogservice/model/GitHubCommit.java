@@ -20,7 +20,7 @@ public class GitHubCommit {
     @Id
     private String id;
 
-    private String authorName;
+    private String userName;
 
     private String commitMessage;
 

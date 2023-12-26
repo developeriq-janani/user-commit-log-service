@@ -30,8 +30,8 @@ public class CommitController {
         return ResponseEntity.ok(this.gitHubCommitService.getAllCommits());
     }
 
-    @GetMapping("/commits/by-author-name")
-    public ResponseEntity<GitHubCommitDetailsDto> getAllCommitsByAuthorName(@RequestParam String authorName) {
-        return ResponseEntity.ok(this.gitHubCommitService.getAllCommitsByAuthorName(authorName));
+    @GetMapping("/commits/by-user-name")
+    public ResponseEntity<GitHubCommitDetailsDto> getAllCommitsByUserName(@RequestParam String userName) {
+        return ResponseEntity.ok(this.gitHubCommitService.getAllCommitsByUserName(userName));
     }
 }

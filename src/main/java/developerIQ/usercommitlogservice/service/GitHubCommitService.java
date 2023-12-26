@@ -11,5 +11,5 @@ public interface GitHubCommitService {
 
     List<GitHubCommit> getAllCommits();
 
-    GitHubCommitDetailsDto getAllCommitsByAuthorName(String authorName);
+    GitHubCommitDetailsDto getAllCommitsByUserName(String userName);
 }

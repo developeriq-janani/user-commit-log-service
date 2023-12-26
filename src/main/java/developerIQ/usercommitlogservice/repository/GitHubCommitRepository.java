@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface GitHubCommitRepository extends MongoRepository<GitHubCommit, String> {
 
-    List<GitHubCommit> findAllByAuthorName(String authorName);
+    List<GitHubCommit> findAllByUserName(String userName);
 
 }
